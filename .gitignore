@@ -1,0 +1,8 @@
+node_modules/
+
+## Back End
+back/node_modules
+
+
+## Front End
+front/node_modules
