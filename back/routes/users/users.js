@@ -1,12 +1,21 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import { WPSync } from 'kiwipress'
 
 const router = express.Router();
+const wp = new WPSync();
+
 dotenv.config();
 router.get('/:id', async (req, res) => {
     const { id } = req.params;
+    const wpdata = await wp.get_users(process.env.USERS + '?id=' + id)
+    console.log('URL: ' + process.env.USERS + '/' + id);
+    return res.json(wpdata[id - 1])
+});
+
+router.get('/', async (req, res) => {
     try {
-        const response = await fetch(`${process.env.WP_USERS}?id=${id}`);
+        const response = await fetch(`${process.env.USERS}`);
         const data = await response.json();
         
         if (!data || data.length === 0) {

@@ -3,7 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import WPSync from 'kiwipress';
+import { WPSync } from 'kiwipress';
 import routes from './routes/routes.js';
 
 dotenv.config();

@@ -13,6 +13,12 @@ module.exports = {
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
+        fallback: {
+            os: require.resolve('os-browserify/browser'),
+            crypto: require.resolve('crypto-browserify'),
+            stream: false,
+            vm: false,
+        },
     },
     module: {
         rules: [

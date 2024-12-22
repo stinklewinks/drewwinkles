@@ -2,7 +2,12 @@ node_modules/
 
 ## Back End
 back/node_modules
-
+back/.env
 
 ## Front End
 front/node_modules
+front/.env
+
+#ignore wordpress
+wp/
+cli/

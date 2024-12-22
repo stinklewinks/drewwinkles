@@ -1,14 +1,16 @@
 import express from 'express';
 import dotenv from 'dotenv';
+import { WPSync } from 'kiwipress'
 
 dotenv.config();
 
 const router = express.Router();
+const wp = new WPSync();
 
 router.get('/slug/:slug', async (req, res) => {
     try {
         const { slug } = req.params;
-        const response = await fetch(`${process.env.WP_POSTS}?slug=${slug}`, {
+        const response = await wp.get_post(`${process.env.POSTS}?slug=${slug}`, {
             headers: {
                 'Content-Type': 'application/json',
                 // 'Authorization': `Bearer ${process.env.WP_API_KEY}` // if applicable
@@ -30,7 +32,7 @@ router.get('/slug/:slug', async (req, res) => {
 router.get('/:id', async (req, res) => {
     try {
         const { id } = req.params;
-        const response = await fetch(`${process.env.WP_POSTS}/${id}`);
+        const response = await wp.get_post(`${process.env.POSTS}/${id}`);
         const data = await response.json();
         
         if (!response.ok) {
@@ -48,7 +50,7 @@ router.get('/:category', async (req, res) => {
     try {
         const { category } = req.params;
         // Get the category from the WP site
-        const response = await fetch(`${process.env.WP_POSTS}?category=${category}`);
+        const response = await fetch(`${process.env.POSTS}?category=${category}`);
         // Check if the response is ok
         if (!response.ok) {
             return res.status(404).json({ message: 'Could not find posts related to this category. Please check category.' });
@@ -72,8 +74,8 @@ router.get('/:category', async (req, res) => {
 
 router.get('/', async (req, res) => {
     try {
-        const response = await fetch(`${process.env.WP_POSTS}`);
-        const data = await response.json();
+        const response = await wp.get_posts(`${process.env.POSTS}`);
+        const data = await response;
         
         if (!data || data.length === 0) {
             return res.status(404).json({ message: 'No posts found' });
