@@ -1,50 +1,46 @@
 import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom";
 
-const postsUrl = 'http://localhost:5000/api/posts/1';
+const postsUrl = 'http://localhost:5000/api/posts/';
 
 function SinglePost() {
+  const { slug } = useParams();
   const [post, setPost] = useState({
-    title: '',
-    content: '',
+    title: {
+      rendered: ''
+    },
+    content: {
+      rendered: ''
+    },
     author: '',
     comments: [],
     date: '',
     tags: []
   })
-  
+  const [error, setError] = useState(null);
   useEffect(() => {
     async function getPost() {
       try{
-          const response = await fetch(`${postsUrl}`)
+          const response = await fetch(`${postsUrl}/slug/${slug}`)
           const data = await response.json()
+          console.log(data)
           setPost(data)
         }
-      catch(error) {
-        console.log(error)
+      catch(error: any) {
+        setError(error.message)
     }
   }
     getPost()
-  }, [])
+  }, [slug])
     return (
-    <>
-        <h2>{post.title}</h2>
-        <div>
-          {post.content}
-        </div>
-        {/* Semantic Author Box */}
-        <div>
-            <h3>Author Name</h3>
-            <p>Author Bio</p>
-        </div>
-        <div>
-            <h3>Comments</h3>
-            <ul>
-                <li>Comment 1</li>
-                <li>Comment 2</li>
-                <li>Comment 3</li>
-            </ul>
-        </div>
-    </>
+    <div className="w:90 m:auto flex col items:center">
+        <h2 
+        className="text:lg"
+        dangerouslySetInnerHTML={{ __html: post.title.rendered}} />
+        <p 
+        className="w:80"
+        dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
+    </div>
   )
 }
 

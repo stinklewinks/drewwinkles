@@ -10,7 +10,7 @@ const wp = new WPSync();
 router.get('/slug/:slug', async (req, res) => {
     try {
         const { slug } = req.params;
-        const response = await wp.get_post(`${process.env.POSTS}?slug=${slug}`, {
+        const response = await fetch(`${process.env.POSTS}?slug=${slug}`, {
             headers: {
                 'Content-Type': 'application/json',
                 // 'Authorization': `Bearer ${process.env.WP_API_KEY}` // if applicable

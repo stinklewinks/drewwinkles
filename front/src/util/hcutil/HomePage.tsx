@@ -1,3 +1,4 @@
+import BlogRouter from "../../routes/routes"
 import FooterNav from "./comp/FooterNav"
 import HeaderNav from "./comp/HeaderNav"
 import Hero from "./comp/Hero"
@@ -7,10 +8,13 @@ import Skill from "./comp/Skills"
 function HomePage() {
 
   return (
+    <>
     <div className="bg:grad:down grape w:full m:auto">
-        <HeaderNav />
+        {/* <HeaderNav /> */}
+        
         <Hero />
-    <div className="m:auto w:80 flex col items:start justify:center gap:1 bgc-white-200">
+    <div className="m:auto w:80 flex col items:start justify:center bgc-white-200">
+    
         <Skill 
             heading="Not Your Typical Engineer"
             content="Determination and passion are what has kept me on the path of becoming a creative engineer. Every step of my higher education journey has been telling me to give up and choose another path. I refuse to believe it. I am a full-stack engineer, cloud architect, and ethical hacker."
@@ -28,7 +32,7 @@ function HomePage() {
             />
             <Skill 
                 heading="Ethical Hacker"
-                content="I am an ethical hacker that is capable of creating ethical applications. I am skilled in various ethical hacking techniques that include:"
+                content="I am an ethical hacker (in training) that is capable of creating ethical applications. I am skilled in various ethical hacking techniques that include:"
                 id="ethical-hacking"
             />
         <div className="m:auto flex col items:center justify:center" id="projects">
@@ -43,20 +47,25 @@ function HomePage() {
             <Project 
                 heading={"Juice"}
                 content="A full, extensive, expressive CSS/UI Library. This site exclusively uses the Juice library."
+                link="https://github.com/citrusworx/juice"
             />
             <Project 
                 heading="KiwiPress"
-                content="KiwiPress is a headless WordPress library that is designed to be used in conjunction with any WordPress installation. Create a decoupled WordPress powerhouse."
+                content="KiwiPress is a headless WordPress library that is designed to be used in conjunction with any WordPress installation. Create a decoupled WordPress powerhouse.
+                        This site will incorporate KiwiPress very soon."
+                link="https://npmjs.com/kiwipress"
             />
             <Project 
                 heading="Kiwi Engine"
                 content="Kiwi Engine is designed to be a comprehensive app engine that can create any type of 'business application'. Business application in this sense means
                     any non-graphic intensive application."
+                link="https://github.com/citrusworx/kiwi"
             />
         </div>
     </div>
     <FooterNav />
     </div>
+    </>
   )
 }
 

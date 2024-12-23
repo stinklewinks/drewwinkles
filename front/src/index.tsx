@@ -18,7 +18,7 @@ interface Post {
 const rootElement = document.getElementById('root');
 const App = () => (
 
-    <div className="lobster">App
+    <div>
     <BlogRoutes />
     </div>
 );
@@ -26,7 +26,7 @@ const App = () => (
 if (rootElement) {
     
     const root = createRoot(rootElement);
-    root.render(<HomePage />);
+    root.render(<App />);
 } else {
     console.error("Root element not found");
 }
