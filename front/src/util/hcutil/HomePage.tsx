@@ -4,7 +4,13 @@ import HeaderNav from "./comp/HeaderNav"
 import Hero from "./comp/Hero"
 import Project from "./comp/Project"
 import Skill from "./comp/Skills"
-
+const container = document.getElementById('button-div');
+function handleClick(){
+    
+    container!.style.cursor = 'pointer';
+    console.log("clicked")
+    window.location.href = "https://github.com/stinklewinks";
+}
 function HomePage() {
 
   return (
@@ -13,7 +19,7 @@ function HomePage() {
         {/* <HeaderNav /> */}
         
         <Hero />
-    <div className="m:auto w:80 flex col items:start justify:center bgc-white-200">
+    <div className="m:auto w:60 flex col items:start justify:center bgc-white-200">
     
         <Skill 
             heading="Not Your Typical Engineer"
@@ -38,8 +44,12 @@ function HomePage() {
         <div className="m:auto flex col items:center justify:center" id="projects">
             <h3 className="text-center">My GitHub</h3>
             {/* Create a GitHub Card */}
-            <div className="w:40 h:20 m:auto bg-purple-600 rounded:md mb:10">
-
+            <div className="w:30 h:20 m:auto bg-purple-600 rounded:md mb:10 flex col items:center justify:center">
+                <div className="w:90% h:90% rounded:md bgc-white-200" id="button-div">
+                    <div onClick={handleClick} className="flex items:center justify:center mt:20">    
+                        <i className="fas-br github icon:lg icon:blue-200"></i><span className="text:lg">/stinklewinks</span>
+                    </div>
+                </div>
             </div>
         </div>
         <div className="mb:10 flex col gap:1">

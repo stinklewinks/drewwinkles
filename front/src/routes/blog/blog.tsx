@@ -1,6 +1,7 @@
 import HomePage from "../../util/hcutil/HomePage";
 import SinglePost from "../../blog/SinglePost";
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
+import Contact from "../../util/hcutil/Contact";
 
 function BlogRouter() {
     return (
@@ -14,7 +15,7 @@ function BlogRouter() {
             
             <Routes>
                 <Route path="/blog/:slug" element={<SinglePost />} />
-                <Route path="/contact"element={<div>Under Construction</div>} />
+                <Route path="/contact"element={<Contact />} />
                 <Route path="/" element={<HomePage />} />
             </Routes>
         </BrowserRouter>

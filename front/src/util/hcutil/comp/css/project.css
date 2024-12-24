@@ -1,0 +1,23 @@
+
+
+
+
+@media screen and (max-width: 768px){
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 2;
+        justify-items: flex-start;
+        justify-content: space-around;
+        margin-top: 3rem;
+    }
+
+    .mob\:\:wide {
+        width: 15vw;
+        height: 8vh;
+    }
+
+    .mob::text-wide {
+        width: 90%
+    }
+}

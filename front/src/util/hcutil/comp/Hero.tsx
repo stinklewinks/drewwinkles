@@ -2,7 +2,7 @@
 function Hero() {
   return (
     <div
-        className="m:auto w:80 h:60 flex col items:center justify:center bg-purple-700"
+        className="m:auto w:60 h:60 flex col items:center justify:center bg-purple-700"
         id="header-container"
     >
         <h2 className="tc-white-100 text:lg">Hello, I am Drew Winkles</h2>
